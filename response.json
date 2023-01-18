@@ -1,0 +1,43 @@
+{
+    "coord": {
+        "lon": 103.8501,
+        "lat": 1.2897
+    },
+    "weather": [
+        {
+            "id": 803,
+            "main": "Clouds",
+            "description": "broken clouds",
+            "icon": "04d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 28.61,
+        "feels_like": 32.4,
+        "temp_min": 26.92,
+        "temp_max": 30.11,
+        "pressure": 1013,
+        "humidity": 73
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 5.14,
+        "deg": 20
+    },
+    "clouds": {
+        "all": 75
+    },
+    "dt": 1674013117,
+    "sys": {
+        "type": 1,
+        "id": 9470,
+        "country": "SG",
+        "sunrise": 1673997179,
+        "sunset": 1674040571
+    },
+    "timezone": 28800,
+    "id": 1880252,
+    "name": "Singapore",
+    "cod": 200
+}
