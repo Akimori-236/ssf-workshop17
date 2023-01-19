@@ -41,11 +41,11 @@ public class Sys {
         return sdf.format(d);
     }
 
-    public String getSunriseTime(Long epoch) {
-        return getDate(epoch);
+    public String getSunriseTime() {
+        return getDate(this.sunrise);
     }
 
-    public String getSunsetTime(Long epoch) {
-        return getDate(epoch);
+    public String getSunsetTime() {
+        return getDate(this.sunset);
     }
 }

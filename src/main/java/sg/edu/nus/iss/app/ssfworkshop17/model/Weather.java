@@ -14,6 +14,7 @@ import jakarta.json.JsonReader;
 public class Weather implements Serializable {
     private String city;
     private String temperature;
+    private Long dt;
 
     // weather in json response is an array, could have more than 1 condition obj
     public List<Condition> conditions = new LinkedList<>();
@@ -42,6 +43,14 @@ public class Weather implements Serializable {
         this.conditions = conditions;
     }
 
+    public Long getDt() {
+        return dt;
+    }
+
+    public void setDt(Long dt) {
+        this.dt = dt;
+    }
+
     public static Weather create(String json) throws IOException {
         Weather w = new Weather();
         try {
@@ -50,13 +59,17 @@ public class Weather implements Serializable {
             // read the json into object
             JsonObject jo = jr.readObject();
             w.setCity(jo.getString("name"));
+            // read the main{} entry
             JsonObject mainObj = jo.getJsonObject("main");
             w.setTemperature(mainObj.getJsonNumber("temp").toString());
+            // read weather[] array entry and stream each obj
             w.conditions = jo.getJsonArray("weather")
                     .stream()
                     .map(v -> (JsonObject) v)
                     .map(v -> Condition.createJson(v))
                     .toList();
+            w.setDt(Long.parseLong(jo.getString("dt")));
+
         } catch (Exception e) {
             System.err.println(e);
         }

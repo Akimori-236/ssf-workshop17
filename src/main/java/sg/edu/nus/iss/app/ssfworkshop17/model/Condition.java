@@ -7,7 +7,7 @@ import jakarta.json.JsonObject;
 public class Condition implements Serializable {
     private String description;
     private String icon;
-    private static String iconZoom = "4x";
+    private static String iconZoom = "4 x";
     
 
     public String getDescription() {

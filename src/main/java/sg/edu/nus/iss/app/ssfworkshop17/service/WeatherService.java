@@ -1,6 +1,10 @@
 package sg.edu.nus.iss.app.ssfworkshop17.service;
 
 import java.io.IOException;
+import java.time.Instant;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
@@ -16,7 +20,6 @@ public class WeatherService {
 
     public Optional<Weather> getweather(String city, String units) throws IOException {
         String apiKey = System.getenv("OPEN_WEATHER_WEB_API_KEY");
-        // String apiKey = "476e23fe1116f4e69d2a3e68672604e1";
         System.out.println("KEY >>> " + apiKey);
         // Building the custom url
         String weatherUrl = UriComponentsBuilder.fromUriString(OPEN_WEATHER_URL)
@@ -37,4 +40,14 @@ public class WeatherService {
         }
         return Optional.of(w);
     }
+    
+    public String getTime(Long unix) {
+        // create instance of time
+        Instant inst = Instant.ofEpochSecond(unix);
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
+        return inst.format(dtf);
+    }
+
+    
 }
